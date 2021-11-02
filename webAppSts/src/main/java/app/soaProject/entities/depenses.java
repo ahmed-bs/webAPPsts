@@ -17,7 +17,7 @@ public class depenses extends transaction implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public depenses(Long idtrans, Time heure, Date day, float montant, String note, String description) {
-		super(idtrans, heure, day, montant, note, description);
+		super(idtrans, heure, day, montant, description);
 		// TODO Auto-generated constructor stub
 	}
 

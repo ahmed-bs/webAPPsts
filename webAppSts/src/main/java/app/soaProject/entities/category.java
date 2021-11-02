@@ -1,10 +1,13 @@
 package app.soaProject.entities;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class category implements Serializable {
@@ -16,6 +19,14 @@ public class category implements Serializable {
 	@GeneratedValue
     private Long idcat;	
 	private String nomCat;
+	
+	
+	@OneToMany(mappedBy="categories", fetch = FetchType.LAZY)
+	private List<transaction> transactions = new ArrayList<transaction>();
+	
+	
+	
+	
 	public Long getIdcat() {
 		return idcat;
 	}

@@ -7,10 +7,13 @@ import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -27,11 +30,15 @@ public class transaction implements Serializable{
 	private Time heure;
 	private Date day;
 	private float montant;
-	private String note;
 	private String description;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idcat")
+	private category categories;
 	
-	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id")
+	private employee employees;
 	
 	public Long getIdtrans() {
 		return idtrans;
@@ -57,21 +64,16 @@ public class transaction implements Serializable{
 	public void setMontant(float montant) {
 		this.montant = montant;
 	}
-	public transaction(Long idtrans, Time heure, Date day, float montant, String note, String description) {
+	public transaction(Long idtrans, Time heure, Date day, float montant, String description) {
 		super();
 		this.idtrans = idtrans;
 		this.heure = heure;
 		this.day = day;
 		this.montant = montant;
-		this.note = note;
+
 		this.description = description;
 	}
-	public String getNote() {
-		return note;
-	}
-	public void setNote(String note) {
-		this.note = note;
-	}
+
 	public String getDescription() {
 		return description;
 	}
