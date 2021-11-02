@@ -3,6 +3,8 @@ package app.soaProject.metier;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import app.soaProject.dao.UserRepository;
 import app.soaProject.entities.utilisateur;
@@ -50,5 +52,16 @@ public class UserMetierImpl implements IUserMetier {
 		// TODO Auto-generated method stub
 		utilisateurRepository.deleteById(id);
 	}
+	
+	
+	@Override
+	public Page<utilisateur> FindutilisateurByDesignation(String designation, int page, int size) {
+		
+		return utilisateurRepository.findutilisateurByDesignation(designation,PageRequest.of(page, size));
+	}
+	
+	
+	
+	
 	
 }
