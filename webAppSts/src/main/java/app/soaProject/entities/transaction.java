@@ -40,6 +40,21 @@ public class transaction implements Serializable{
 	@JoinColumn(name = "id")
 	private employee employees;
 	
+	
+	public transaction(Long idtrans, Time heure, Date day, float montant, String description) {
+		super();
+		this.idtrans = idtrans;
+		this.heure = heure;
+		this.day = day;
+		this.montant = montant;
+
+		this.description = description;
+	}
+
+	public transaction() {
+		super();
+	}
+
 	public Long getIdtrans() {
 		return idtrans;
 	}
@@ -63,15 +78,6 @@ public class transaction implements Serializable{
 	}
 	public void setMontant(float montant) {
 		this.montant = montant;
-	}
-	public transaction(Long idtrans, Time heure, Date day, float montant, String description) {
-		super();
-		this.idtrans = idtrans;
-		this.heure = heure;
-		this.day = day;
-		this.montant = montant;
-
-		this.description = description;
 	}
 
 	public String getDescription() {

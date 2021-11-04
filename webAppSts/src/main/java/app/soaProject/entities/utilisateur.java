@@ -27,6 +27,10 @@ public class utilisateur implements Serializable {
 	private String adresse;
 	private String telephone;
 	private String email;
+	
+	public utilisateur() {
+		super();
+	}
 	public utilisateur(Long id, String nom, String prenom, String adresse, String telephone, String email) {
 		super();
 		this.id = id;
@@ -57,6 +61,7 @@ public class utilisateur implements Serializable {
 	public String getAdresse() {
 		return adresse;
 	}
+
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}

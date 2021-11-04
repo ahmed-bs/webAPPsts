@@ -3,15 +3,16 @@ package app.soaProject.metier;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 import app.soaProject.dao.CategoryRepository;
 import app.soaProject.entities.category;
 
-
+@Service
 public class CategoryMetierImpl implements ICategoryMetier {
 	@Autowired
 	CategoryRepository categoryRepository;
+	
+	
 	@Override
 	public category savecategory(category cat) {
 		// TODO Auto-generated method stub
@@ -50,14 +51,7 @@ public class CategoryMetierImpl implements ICategoryMetier {
 
 	
 	
-	
-	
-	@Override
-	public Page<category> FindcategoryByDesignation(String designation, int page, int size) {
-		
-		return categoryRepository.findcategorynByDesignation(designation,PageRequest.of(page, size));
-	}
-	
+
 	
 	
 	

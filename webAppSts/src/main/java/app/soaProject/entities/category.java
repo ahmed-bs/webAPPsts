@@ -24,9 +24,17 @@ public class category implements Serializable {
 	@OneToMany(mappedBy="categories", fetch = FetchType.LAZY)
 	private List<transaction> transactions = new ArrayList<transaction>();
 	
-	
-	
-	
+	public category(Long idcat, String nomCat) {
+		super();
+		this.idcat = idcat;
+		this.nomCat = nomCat;
+	}
+	public category() {
+		super();
+	}
+
+
+
 	public Long getIdcat() {
 		return idcat;
 	}
@@ -39,10 +47,6 @@ public class category implements Serializable {
 	public void setNomCat(String nomCat) {
 		this.nomCat = nomCat;
 	}
-	public category(Long idcat, String nomCat) {
-		super();
-		this.idcat = idcat;
-		this.nomCat = nomCat;
-	}
+
 
 }
