@@ -1,6 +1,7 @@
 package app.soaProject.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -10,10 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)
-public class utilisateur implements Serializable {
+public class utilisateur implements Serializable,UserDetails {
 
 	/**
 	 * 
@@ -27,11 +31,12 @@ public class utilisateur implements Serializable {
 	private String adresse;
 	private String telephone;
 	private String email;
-	
+	private String username;
+	private String password;
 	public utilisateur() {
 		super();
 	}
-	public utilisateur(Long id, String nom, String prenom, String adresse, String telephone, String email) {
+	public utilisateur(Long id, String nom, String prenom, String adresse, String telephone, String email,String username,String password) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -39,6 +44,8 @@ public class utilisateur implements Serializable {
 		this.adresse = adresse;
 		this.telephone = telephone;
 		this.email = email;
+		this.setPassword(password);
+		this.setUsername(username);
 	}
 	public Long getId() {
 		return id;
@@ -77,8 +84,49 @@ public class utilisateur implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-
+	
+	
+	
 	
 	
 

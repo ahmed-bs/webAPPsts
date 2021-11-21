@@ -21,8 +21,13 @@ public class employee extends utilisateur implements Serializable{
 	@OneToMany(mappedBy="employees", fetch = FetchType.LAZY)
 	private List<transaction> transactions = new ArrayList<transaction>();
 	
-	public employee(Long id, String nom, String prenom, String adresse, String telephone, String email) {
-		super(id, nom, prenom, adresse, telephone, email);
+	public employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public employee(Long id, String nom, String prenom, String adresse, String telephone, String email,String username,String password) {
+		super(id, nom, prenom, adresse, telephone, email,  username,password);
 		// TODO Auto-generated constructor stub
 	}
 	

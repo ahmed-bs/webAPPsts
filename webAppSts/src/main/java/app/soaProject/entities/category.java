@@ -23,15 +23,15 @@ public class category implements Serializable {
 	
 	@OneToMany(mappedBy="categories", fetch = FetchType.LAZY)
 	private List<transaction> transactions = new ArrayList<transaction>();
-	
+	public category() {
+		super();
+	}
 	public category(Long idcat, String nomCat) {
 		super();
 		this.idcat = idcat;
 		this.nomCat = nomCat;
 	}
-	public category() {
-		super();
-	}
+	
 
 
 
