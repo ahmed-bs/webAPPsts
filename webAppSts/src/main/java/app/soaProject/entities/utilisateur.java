@@ -1,15 +1,18 @@
 package app.soaProject.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,10 +36,12 @@ public class utilisateur implements Serializable,UserDetails {
 	private String email;
 	private String username;
 	private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<AppRole> role=new ArrayList<>();
 	public utilisateur() {
 		super();
 	}
-	public utilisateur(Long id, String nom, String prenom, String adresse, String telephone, String email,String username,String password) {
+	public utilisateur(Long id, String nom, String prenom, String adresse, String telephone, String email,String username,String password,Collection<AppRole> role) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -46,6 +51,7 @@ public class utilisateur implements Serializable,UserDetails {
 		this.email = email;
 		this.setPassword(password);
 		this.setUsername(username);
+		this.role=role;
 	}
 	public Long getId() {
 		return id;
@@ -122,6 +128,12 @@ public class utilisateur implements Serializable,UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	public Collection<AppRole> getRole() {
+		return role;
+	}
+	public void setRole(Collection<AppRole> role) {
+		this.role = role;
 	}
 
 	

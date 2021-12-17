@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import app.soaProject.dao.UserRepository;
 import app.soaProject.entities.utilisateur;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
-//@Slf4j
+@Slf4j
 
 public class UserService implements UserDetailsService {
 	private UserRepository userRepository;

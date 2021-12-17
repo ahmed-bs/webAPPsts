@@ -1,16 +1,23 @@
 package app.soaProject.service;
 
+import java.net.URI;
 import java.util.Collection;
 import java.util.Optional;
+
+import javax.management.relation.Role;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import app.soaProject.entities.AppRole;
 import app.soaProject.entities.utilisateur;
 import app.soaProject.metier.IUserMetier;
 
@@ -61,6 +68,11 @@ public class UserRestService {
 		}
 		
 		
-		
-		
+		@PostMapping("/role/save")
+		public ResponseEntity<AppRole> saveRole(@RequestBody AppRole role)
+		{
+			URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("role/save").toUriString()); 
+			return ResponseEntity.created(uri).body(userMetier.saveRole(role));
+			
+		}		
 }

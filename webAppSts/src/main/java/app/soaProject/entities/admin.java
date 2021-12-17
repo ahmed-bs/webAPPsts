@@ -1,6 +1,7 @@
 package app.soaProject.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -19,9 +20,22 @@ public class admin extends utilisateur implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public admin(Long id, String nom, String prenom, String adresse, String telephone, String email,String username,String password) {
-		super(id, nom, prenom, adresse, telephone, email , username,password);
+	/**
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param adresse
+	 * @param telephone
+	 * @param email
+	 * @param username
+	 * @param password
+	 * @param role
+	 */
+	public admin(Long id, String nom, String prenom, String adresse, String telephone, String email, String username,
+			String password, Collection<AppRole> role) {
+		super(id, nom, prenom, adresse, telephone, email, username, password, role);
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }
